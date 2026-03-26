@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from './ui/Button'
 
@@ -15,21 +15,45 @@ const headlineLines = ['Turn Your', 'Expertise Into', 'Influence']
 export default function Hero() {
   const [entered, setEntered] = useState(false)
   const [contentVisible, setContentVisible] = useState(true)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const timer = setTimeout(() => setContentVisible(false), 2000)
     return () => clearTimeout(timer)
   }, [])
 
+  // Mute when user scrolls past the hero section
+  useEffect(() => {
+    if (!entered) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!iframeRef.current?.contentWindow) return
+        const cmd = entry.isIntersecting ? 'unMute' : 'mute'
+        iframeRef.current.contentWindow.postMessage(
+          JSON.stringify({ event: 'command', func: cmd, args: [] }),
+          '*'
+        )
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [entered])
+
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden bg-navy"
     >
-      {/* YouTube video */}
+      {/* YouTube video — muted until user clicks enter */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <iframe
-          src={`https://www.youtube.com/embed/FIxXuY8Gpw4?autoplay=1&mute=${entered ? 0 : 1}&loop=1&playlist=FIxXuY8Gpw4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+          ref={iframeRef}
+          src={`https://www.youtube.com/embed/FIxXuY8Gpw4?autoplay=1&mute=${entered ? 0 : 1}&loop=1&playlist=FIxXuY8Gpw4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
           allow="autoplay; encrypted-media"
           className="pointer-events-none absolute"
           style={{
@@ -72,6 +96,7 @@ export default function Hero() {
               className="group relative flex flex-col items-center gap-5 cursor-pointer"
               aria-label="Enter site with sound"
             >
+              {/* Pulsing ring */}
               <div className="relative">
                 <motion.div
                   className="absolute inset-0 rounded-full border-2 border-linkedin"
@@ -83,8 +108,13 @@ export default function Hero() {
                   animate={{ scale: [1, 1.6], opacity: [0.6, 0] }}
                   transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut', delay: 0.6 }}
                 />
+                {/* Play button circle */}
                 <div className="relative w-24 h-24 rounded-full flex items-center justify-center border-2 border-white/80 bg-white/10 backdrop-blur-sm group-hover:bg-linkedin/80 group-hover:border-linkedin transition-all duration-300">
-                  <svg className="w-10 h-10 text-white translate-x-1" fill="currentColor" viewBox="0 0 24 24">
+                  <svg
+                    className="w-10 h-10 text-white translate-x-1"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path d="M8 5v14l11-7z" />
                   </svg>
                 </div>
@@ -100,82 +130,82 @@ export default function Hero() {
       {/* Content — fades out after 2s */}
       <AnimatePresence>
         {contentVisible && (
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full pt-28 pb-20 flex items-center min-h-screen"
+        initial={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1, ease: 'easeInOut' }}
+      >
+        <div className="flex-1 max-w-3xl">
           <motion.div
-            className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full pt-28 pb-20 flex items-center min-h-screen"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: 'easeInOut' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center gap-3 mb-8"
           >
-            <div className="flex-1 max-w-3xl">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="flex items-center gap-3 mb-8"
-              >
-                <div className="w-8 h-px bg-linkedin" />
-                <span className="font-mono text-xs tracking-[0.2em] uppercase text-linkedin">
-                  LinkedIn Personal Branding
-                </span>
-              </motion.div>
-
-              <h1 className="font-display text-6xl md:text-7xl lg:text-[88px] font-bold leading-[1.02] tracking-tight mb-8">
-                {headlineLines.map((line, i) => (
-                  <div key={i} className="overflow-hidden">
-                    <motion.span
-                      className={`block ${i === 2 ? 'italic gradient-text' : 'text-white'}`}
-                      initial={{ y: '110%' }}
-                      animate={{ y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.5 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      {line}
-                    </motion.span>
-                  </div>
-                ))}
-              </h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                className="font-sans text-lg md:text-xl text-textMid leading-relaxed max-w-xl mb-10"
-              >
-                We architect personal brands for founders, executives, and industry leaders
-                on LinkedIn — transforming quiet credibility into commanding visibility.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 1.05, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-wrap items-center gap-4"
-              >
-                <Button href="#contact" size="lg">Book a Strategy Call →</Button>
-                <Button href="#case-studies" variant="outline" size="lg">View Case Studies</Button>
-              </motion.div>
-            </div>
-
-            {/* Stats — desktop only */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:flex flex-col gap-6 ml-auto"
-            >
-              {heroStats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 1.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="bg-black/50 backdrop-blur-sm border border-linkedin/20 rounded-2xl p-5 text-right min-w-[160px]"
-                >
-                  <div className="font-sans text-3xl font-black gradient-text leading-none mb-1">{stat.value}</div>
-                  <div className="font-sans text-xs text-textMid leading-tight">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
+            <div className="w-8 h-px bg-linkedin" />
+            <span className="font-mono text-xs tracking-[0.2em] uppercase text-linkedin">
+              LinkedIn Personal Branding
+            </span>
           </motion.div>
+
+          <h1 className="font-display text-6xl md:text-7xl lg:text-[88px] font-bold leading-[1.02] tracking-tight mb-8">
+            {headlineLines.map((line, i) => (
+              <div key={i} className="overflow-hidden">
+                <motion.span
+                  className={`block ${i === 2 ? 'italic gradient-text' : 'text-white'}`}
+                  initial={{ y: '110%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.5 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  {line}
+                </motion.span>
+              </div>
+            ))}
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="font-sans text-lg md:text-xl text-textMid leading-relaxed max-w-xl mb-10"
+          >
+            We architect personal brands for founders, executives, and industry leaders
+            on LinkedIn — transforming quiet credibility into commanding visibility.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.05, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap items-center gap-4"
+          >
+            <Button href="#contact" size="lg">Book a Strategy Call →</Button>
+            <Button href="#case-studies" variant="outline" size="lg">View Case Studies</Button>
+          </motion.div>
+        </div>
+
+        {/* Stats — desktop only */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          className="hidden lg:flex flex-col gap-6 ml-auto"
+        >
+          {heroStats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-black/50 backdrop-blur-sm border border-linkedin/20 rounded-2xl p-5 text-right min-w-[160px]"
+            >
+              <div className="font-sans text-3xl font-black gradient-text leading-none mb-1">{stat.value}</div>
+              <div className="font-sans text-xs text-textMid leading-tight">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
         )}
       </AnimatePresence>
 
