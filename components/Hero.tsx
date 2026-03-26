@@ -62,21 +62,23 @@ export default function Hero() {
             transform: 'translate(-50%, -50%)',
             width: 'max(100vw, 177.78vh)',
             height: 'max(56.25vw, 100vh)',
-            opacity: entered ? 0.75 : 0.5,
+            opacity: entered ? 1 : 0.5,
             transition: 'opacity 1s ease',
           }}
           title="Hero background video"
         />
       </div>
 
-      {/* Gradient overlay */}
-      <div
-        className="absolute inset-0 z-[1]"
-        style={{
-          background:
-            'linear-gradient(105deg, rgba(10,22,40,0.82) 0%, rgba(10,22,40,0.55) 55%, rgba(10,22,40,0.2) 100%), linear-gradient(to top, rgba(10,22,40,0.7) 0%, transparent 40%)',
-        }}
-      />
+      {/* Gradient overlay — hidden after user enters */}
+      {!entered && (
+        <div
+          className="absolute inset-0 z-[1]"
+          style={{
+            background:
+              'linear-gradient(105deg, rgba(10,22,40,0.82) 0%, rgba(10,22,40,0.55) 55%, rgba(10,22,40,0.2) 100%), linear-gradient(to top, rgba(10,22,40,0.7) 0%, transparent 40%)',
+          }}
+        />
+      )}
 
       {/* Click-to-enter splash overlay */}
       <AnimatePresence>
