@@ -2,7 +2,7 @@ import Image from 'next/image'
 import RevealOnScroll, { StaggerContainer, StaggerChild } from './ui/RevealOnScroll'
 
 const founderStats = [
-  { value: '95,000+', label: 'Followers' },
+  { value: '96,297+', label: 'Followers' },
   { value: '17,887,387', label: 'Cumulative Impressions' },
   { value: '265,262', label: 'Engagements' },
 ]
@@ -40,7 +40,7 @@ export default function FounderProof() {
             <RevealOnScroll delay={0.1}>
               <p className="font-sans text-xl text-navyMid leading-relaxed mb-10">
                 Before building brands for others, Mahdi Shafiei built his own — from zero to{' '}
-                <strong className="text-navyText">95,000+ followers in less than a year.</strong>{' '}
+                <strong className="text-navyText">96,000+ followers in less than a year.</strong>{' '}
                 What started as a personal experiment became the proof of concept behind everything Trifid Media does today.
               </p>
             </RevealOnScroll>
@@ -75,35 +75,17 @@ export default function FounderProof() {
             </RevealOnScroll>
           </div>
 
-          {/* Right — image placeholders */}
+          {/* Right — founder image */}
           <RevealOnScroll direction="left" delay={0.2}>
-            <div className="grid grid-cols-1 gap-4">
-              {/* REPLACE: Founder LinkedIn screenshot */}
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-navy-secondary border border-linkedin/20 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="text-linkedin text-4xl mb-3">📊</div>
-                  <p className="font-mono text-xs text-textMid tracking-widest uppercase">
-                    {/* REPLACE: Add founder LinkedIn analytics screenshot here */}
-                    Founder Analytics Screenshot
-                  </p>
-                  <p className="font-sans text-xs text-textMuted mt-1">
-                    /public/images/founder-analytics.jpg
-                  </p>
-                </div>
-              </div>
-              {/* REPLACE: Founder LinkedIn profile screenshot */}
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-navy-secondary border border-linkedin/20 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="text-linkedin text-4xl mb-3">👤</div>
-                  <p className="font-mono text-xs text-textMid tracking-widest uppercase">
-                    {/* REPLACE: Add founder LinkedIn profile screenshot here */}
-                    Founder Profile Screenshot
-                  </p>
-                  <p className="font-sans text-xs text-textMuted mt-1">
-                    /public/images/founder-profile.jpg
-                  </p>
-                </div>
-              </div>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-linkedin/10">
+              <Image
+                src="/images/Mahdi.png"
+                alt="Mahdi Shafiei — LinkedIn profile and analytics"
+                width={600}
+                height={900}
+                className="w-full h-auto"
+                priority
+              />
             </div>
           </RevealOnScroll>
         </div>
