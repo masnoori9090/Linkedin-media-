@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from './ui/Button'
 
@@ -15,21 +15,45 @@ const headlineLines = ['Turn Your', 'Expertise Into', 'Influence']
 export default function Hero() {
   const [entered, setEntered] = useState(false)
   const [contentVisible, setContentVisible] = useState(true)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const timer = setTimeout(() => setContentVisible(false), 2000)
     return () => clearTimeout(timer)
   }, [])
 
+  // Mute when user scrolls past the hero section
+  useEffect(() => {
+    if (!entered) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!iframeRef.current?.contentWindow) return
+        const cmd = entry.isIntersecting ? 'unMute' : 'mute'
+        iframeRef.current.contentWindow.postMessage(
+          JSON.stringify({ event: 'command', func: cmd, args: [] }),
+          '*'
+        )
+      },
+      { threshold: 0.1 }
+    )
+
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [entered])
+
   return (
     <section
+      ref={sectionRef}
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden bg-navy"
     >
       {/* YouTube video — muted until user clicks enter */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <iframe
-          src={`https://www.youtube.com/embed/FIxXuY8Gpw4?autoplay=1&mute=${entered ? 0 : 1}&loop=1&playlist=FIxXuY8Gpw4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+          ref={iframeRef}
+          src={`https://www.youtube.com/embed/FIxXuY8Gpw4?autoplay=1&mute=${entered ? 0 : 1}&loop=1&playlist=FIxXuY8Gpw4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
           allow="autoplay; encrypted-media"
           className="pointer-events-none absolute"
           style={{
