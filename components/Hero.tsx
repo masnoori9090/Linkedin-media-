@@ -17,25 +17,25 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden bg-navy"
     >
-      {/* ======================================================
-          REPLACE: Add your hero video file here
-          Place your MP4 at /public/videos/hero.mp4
-          ====================================================== */}
-      {/* Video background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover opacity-30"
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/videos/hero-poster.jpg"
-        aria-hidden="true"
-        preload="none"
-      >
-        <source src="/videos/hero.mp4" type="video/mp4" />
-      </video>
+      {/* YouTube background video */}
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <iframe
+          src="https://www.youtube.com/embed/FIxXuY8Gpw4?autoplay=1&mute=1&loop=1&playlist=FIxXuY8Gpw4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+          allow="autoplay; encrypted-media"
+          className="pointer-events-none absolute"
+          style={{
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 'max(100vw, 177.78vh)',
+            height: 'max(56.25vw, 100vh)',
+            opacity: 0.35,
+          }}
+          title="Hero background video"
+        />
+      </div>
 
-      {/* Gradient overlay — navy to transparent, heavier on left & bottom */}
+      {/* Gradient overlay */}
       <div
         className="absolute inset-0 z-[1]"
         style={{
@@ -44,7 +44,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Animated radial glows (LinkedIn blue) */}
+      {/* Animated radial glows */}
       <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
         <motion.div
           className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full"
@@ -63,7 +63,6 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full pt-28 pb-20 flex items-center min-h-screen">
         <div className="flex-1 max-w-3xl">
-          {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -76,7 +75,6 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Headline — line by line reveal */}
           <h1 className="font-display text-6xl md:text-7xl lg:text-[88px] font-bold leading-[1.02] tracking-tight mb-8">
             {headlineLines.map((line, i) => (
               <div key={i} className="overflow-hidden">
@@ -96,7 +94,6 @@ export default function Hero() {
             ))}
           </h1>
 
-          {/* Subhead */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -107,7 +104,6 @@ export default function Hero() {
             on LinkedIn — transforming quiet credibility into commanding visibility.
           </motion.p>
 
-          {/* Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,7 +119,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right side floating stats — desktop only */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -147,7 +142,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
