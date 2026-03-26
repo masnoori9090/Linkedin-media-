@@ -86,7 +86,7 @@ export default function Hero() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-0 z-[50] flex flex-col items-center justify-center"
-            style={{ background: 'rgba(10,22,40,0.55)', backdropFilter: 'blur(2px)' }}
+            style={{ background: 'rgba(10,22,40,0.55)' }}
           >
             <motion.button
               initial={{ scale: 0.8, opacity: 0 }}
