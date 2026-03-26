@@ -18,7 +18,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="inline-flex items-center gap-0 mb-4">
-              <span className="font-display text-xl font-bold text-white tracking-tight">Trifid</span>
+              <span className="font-display text-xl font-bold text-white tracking-tight">LinkedIn</span>
               <span className="font-display text-xl font-bold tracking-tight" style={{ color: '#0077B5' }}>
                 Media
               </span>
@@ -88,10 +88,10 @@ export default function Footer() {
             </h4>
             <div className="space-y-3">
               <a
-                href="mailto:hello@trifidmedia.com"
+                href="mailto:hello@linkedinmedia.com"
                 className="font-sans text-sm text-textMid hover:text-linkedin transition-colors duration-200 block"
               >
-                hello@trifidmedia.com
+                hello@linkedinmedia.com
               </a>
               <p className="font-sans text-sm text-textMuted">Dubai, UAE</p>
               <a
@@ -111,7 +111,7 @@ export default function Footer() {
           style={{ borderColor: 'rgba(255,255,255,0.06)' }}
         >
           <p className="font-sans text-xs text-textMuted">
-            © 2026 Trifid Media. All rights reserved.
+            © 2026 LinkedIn Media. All rights reserved.
           </p>
           <a
             href="#hero"

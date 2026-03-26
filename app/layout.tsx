@@ -1,28 +1,28 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, DM_Sans, Space_Mono } from 'next/font/google'
+import { Syne, Inter, DM_Mono } from 'next/font/google'
 import './globals.css'
 
-const playfair = Playfair_Display({
+const syne = Syne({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-syne',
   display: 'swap',
 })
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-dm-sans',
+  variable: '--font-inter',
   display: 'swap',
 })
 
-const spaceMono = Space_Mono({
+const dmMono = DM_Mono({
   subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-space-mono',
+  weight: ['400', '500'],
+  variable: '--font-dm-mono',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Trifid Media — LinkedIn Personal Branding Agency',
+  title: 'LinkedIn Media — LinkedIn Personal Branding Agency',
   description:
     'We architect personal brands for founders, executives, and industry leaders on LinkedIn — transforming quiet credibility into commanding visibility. Dubai-based, globally reaching.',
   keywords: [
@@ -31,19 +31,19 @@ export const metadata: Metadata = {
     'thought leadership',
     'founder branding',
     'content strategy LinkedIn',
-    'Trifid Media',
+    'LinkedIn Media',
   ],
   openGraph: {
-    title: 'Trifid Media — LinkedIn Personal Branding Agency',
+    title: 'LinkedIn Media — LinkedIn Personal Branding Agency',
     description:
       'We architect personal brands for founders, executives, and industry leaders on LinkedIn.',
-    siteName: 'Trifid Media',
+    siteName: 'LinkedIn Media',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Trifid Media — LinkedIn Personal Branding Agency',
+    title: 'LinkedIn Media — LinkedIn Personal Branding Agency',
     description:
       'We architect personal brands for founders, executives, and industry leaders on LinkedIn.',
   },
@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${dmSans.variable} ${spaceMono.variable}`}
+      className={`${syne.variable} ${inter.variable} ${dmMono.variable}`}
     >
       <body className="font-sans antialiased">
         {/* Noise overlay — premium grain texture */}

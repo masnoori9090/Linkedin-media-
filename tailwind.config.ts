@@ -34,9 +34,9 @@ const config: Config = {
         offwhite: '#F3F6F9',
       },
       fontFamily: {
-        display: ['var(--font-playfair)', 'Georgia', 'serif'],
-        sans: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-space-mono)', 'monospace'],
+        display: ['var(--font-syne)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-dm-mono)', 'monospace'],
       },
       backgroundImage: {
         'gradient-primary': 'linear-gradient(135deg, #0077B5 0%, #38B6FF 50%, #00D4AA 100%)',

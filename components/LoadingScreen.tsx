@@ -41,7 +41,7 @@ export default function LoadingScreen() {
             className="relative z-10 text-center mb-12"
           >
             <h1 className="font-mono text-3xl md:text-4xl tracking-[0.35em] uppercase gradient-text font-bold">
-              Trifid Media
+              LinkedIn Media
             </h1>
             <p className="font-mono text-xs tracking-[0.2em] text-textMid mt-3 uppercase">
               LinkedIn Personal Branding

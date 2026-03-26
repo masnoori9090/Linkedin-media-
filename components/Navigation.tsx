@@ -32,7 +32,7 @@ export default function Navigation() {
         <div className="max-w-7xl mx-auto px-6 md:px-8 h-[72px] flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-0.5" data-cursor="hover">
-            <span className="font-display text-xl font-bold text-white tracking-tight">Trifid</span>
+            <span className="font-display text-xl font-bold text-white tracking-tight">LinkedIn</span>
             <span
               className="font-display text-xl font-bold tracking-tight"
               style={{ color: '#0077B5' }}
