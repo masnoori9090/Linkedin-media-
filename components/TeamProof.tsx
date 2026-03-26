@@ -1,11 +1,13 @@
+import Image from 'next/image'
 import RevealOnScroll, { StaggerContainer, StaggerChild } from './ui/RevealOnScroll'
 
 const team = [
   {
     name: 'Faress Ouzaghla',
     headline: 'Helping brands go viral without selling their soul',
+    photo: '/images/faress.png',
     stats: [
-      { value: '9,652', label: 'Followers' },
+      { value: '9,552', label: 'Followers' },
       { value: '300,600', label: 'Impressions' },
     ],
     color: '#0077B5',
@@ -13,6 +15,7 @@ const team = [
   {
     name: 'Diana Salam',
     headline: 'Brand & Project Manager | Creative Director | Luxury, Fashion & Beauty',
+    photo: '/images/Diana.png',
     stats: [
       { value: '329,470', label: 'Impressions' },
       { value: '197,979', label: 'Members Reached' },
@@ -23,6 +26,7 @@ const team = [
   {
     name: 'Randy Gad',
     headline: 'On a mission to help 1,000 ambitious entrepreneurs',
+    photo: '/images/Rnady.png',
     stats: [
       { value: '2,118', label: 'Followers' },
       { value: '96,527', label: 'Impressions' },
@@ -53,27 +57,20 @@ export default function TeamProof() {
           {team.map((member) => (
             <StaggerChild key={member.name}>
               <div className="card-hover-glow bg-navy-card border border-white/5 rounded-3xl overflow-hidden h-full">
-                {/* Photo placeholder */}
-                <div className="relative aspect-square bg-gradient-to-br from-navy to-navy-secondary flex flex-col items-center justify-center">
-                  {/* REPLACE: Add team member photo here */}
+                {/* Photo */}
+                <div className="relative overflow-hidden" style={{ aspectRatio: '1' }}>
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top"
+                  />
                   <div
-                    className="w-24 h-24 rounded-full flex items-center justify-center text-4xl mb-4 border-2"
-                    style={{ borderColor: member.color, background: `${member.color}15` }}
-                  >
-                    👤
-                  </div>
-                  <p className="font-mono text-xs text-textMuted tracking-widest uppercase text-center px-4">
-                    {/* REPLACE: /public/images/team-{member.name.toLowerCase().replace(' ','-')}.jpg */}
-                    Photo Placeholder
-                  </p>
-
-                  {/* Analytics screenshot placeholder */}
-                  <div className="absolute bottom-3 right-3 bg-navy-card/90 backdrop-blur-sm rounded-xl p-2 border border-white/10">
-                    <p className="font-mono text-[9px] text-textMuted tracking-wider uppercase">
-                      {/* REPLACE: LinkedIn analytics screenshot */}
-                      Analytics
-                    </p>
-                  </div>
+                    className="absolute inset-0"
+                    style={{
+                      background: `linear-gradient(to top, ${member.color}33 0%, transparent 60%)`,
+                    }}
+                  />
                 </div>
 
                 {/* Info */}
