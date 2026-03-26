@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gradient-primary: linear-gradient(135deg, #0077B5 0%, #38B6FF 50%, #00D4AA 100%);
+  --gradient-secondary: linear-gradient(135deg, #00D4AA 0%, #38B6FF 50%, #0077B5 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A1628;
+  color: #E8ECF1;
+  overflow-x: hidden;
+  cursor: none; /* hide default cursor on desktop — custom cursor takes over */
+}
+
+@media (pointer: coarse) {
+  body { cursor: auto; }
+}
+
+/* ===== GRADIENT TEXT ===== */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== NOISE OVERLAY ===== */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+/* ===== GRADIENT BUTTON ===== */
+.btn-gradient {
+  background: var(--gradient-primary);
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0A66C2 0%, #38B6FF 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn-gradient:hover::before { opacity: 1; }
+.btn-gradient:hover { transform: translateY(-2px); }
+.btn-gradient span { position: relative; z-index: 1; }
+
+/* ===== GLASSMORPHISM NAV ===== */
+.nav-glass {
+  background: rgba(10, 22, 40, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 119, 181, 0.15);
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A1628; }
+::-webkit-scrollbar-thumb { background: #0A66C2; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #38B6FF; }
+
+/* ===== SELECTION ===== */
+::selection {
+  background: rgba(0, 119, 181, 0.3);
+  color: #E8ECF1;
+}
+
+/* ===== SECTION TRANSITION ===== */
+.section-light {
+  background-color: #FFFFFF;
+  color: #0A1628;
+}
+
+/* ===== REVEAL ANIMATION BASE ===== */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ===== MARQUEE ===== */
+.marquee-inner {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===== CARD HOVER GLOW ===== */
+.card-hover-glow {
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+.card-hover-glow:hover {
+  box-shadow: 0 0 40px rgba(0, 119, 181, 0.2), 0 20px 60px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+}
+
+/* ===== PROCESS STEP CONNECTOR ===== */
+.process-connector {
+  background: linear-gradient(90deg, #0077B5, #38B6FF);
+  height: 2px;
+  flex: 1;
+}
+
+/* ===== REDUCE MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-inner { animation: none; }
+}
