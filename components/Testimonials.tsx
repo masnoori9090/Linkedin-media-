@@ -12,7 +12,7 @@ const testimonials = [
   },
   {
     quote:
-      'In just 2 months, Trifid took my account from virtually zero to over 77,000 impressions. They made my 30 years of experience feel fresh and compelling.',
+      'In just 2 months, LinkedIn Media took my account from virtually zero to over 77,000 impressions. They made my 30 years of experience feel fresh and compelling.',
     name: 'Paul Papadopoulos',
     title: 'Interior Design Leader',
     location: 'Australia',

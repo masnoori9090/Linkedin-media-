@@ -32,7 +32,7 @@ export default function Footer() {
                 href="https://linkedin.com/company/trifid-media"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Trifid Media on LinkedIn"
+                aria-label="LinkedIn Media on LinkedIn"
                 className="w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-200 hover:bg-linkedin hover:border-linkedin"
                 style={{ borderColor: 'rgba(0,119,181,0.3)' }}
               >

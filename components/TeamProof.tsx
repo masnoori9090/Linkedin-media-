@@ -46,7 +46,7 @@ export default function TeamProof() {
               The Team
             </span>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight max-w-3xl mx-auto">
-              The Trifid team followed suit and{' '}
+              The LinkedIn Media team followed suit and{' '}
               <span className="italic gradient-text">scaled their accounts</span> as well
             </h2>
           </div>

@@ -41,7 +41,7 @@ export default function FounderProof() {
               <p className="font-sans text-xl text-navyMid leading-relaxed mb-10">
                 Before building brands for others, Mahdi Shafiei built his own — from zero to{' '}
                 <strong className="text-navyText">96,000+ followers in less than a year.</strong>{' '}
-                What started as a personal experiment became the proof of concept behind everything Trifid Media does today.
+                What started as a personal experiment became the proof of concept behind everything LinkedIn Media does today.
               </p>
             </RevealOnScroll>
 
@@ -68,7 +68,7 @@ export default function FounderProof() {
 
             <RevealOnScroll delay={0.4}>
               <p className="font-sans text-navyMid leading-relaxed mt-8">
-                LinkedIn helped Trifid attract leads across the GCC and globally, hire top-tier talent,
+                LinkedIn helped LinkedIn Media attract leads across the GCC and globally, hire top-tier talent,
                 land global retainer clients, get Mahdi invited to speak on massive stages, and lock in
                 partnerships with some of the coolest brands in the region.
               </p>
