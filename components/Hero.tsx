@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Button from './ui/Button'
 
@@ -14,6 +14,12 @@ const headlineLines = ['Turn Your', 'Expertise Into', 'Influence']
 
 export default function Hero() {
   const [entered, setEntered] = useState(false)
+  const [contentVisible, setContentVisible] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setContentVisible(false), 2000)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <section
@@ -97,8 +103,15 @@ export default function Hero() {
         )}
       </AnimatePresence>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full pt-28 pb-20 flex items-center min-h-screen">
+      {/* Content — fades out after 2s */}
+      <AnimatePresence>
+        {contentVisible && (
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full pt-28 pb-20 flex items-center min-h-screen"
+        initial={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1, ease: 'easeInOut' }}
+      >
         <div className="flex-1 max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -168,7 +181,9 @@ export default function Hero() {
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Scroll indicator */}
       <AnimatePresence>
