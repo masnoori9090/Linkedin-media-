@@ -17,23 +17,23 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden bg-navy"
     >
-      {/* ======================================================
-          REPLACE: Add your hero video file here
-          Place your MP4 at /public/videos/hero.mp4
-          ====================================================== */}
-      {/* Video background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover opacity-30"
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/videos/hero-poster.jpg"
-        aria-hidden="true"
-        preload="none"
-      >
-        <source src="/videos/hero.mp4" type="video/mp4" />
-      </video>
+      {/* YouTube background video */}
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <iframe
+          src="https://www.youtube.com/embed/FIxXuY8Gpw4?autoplay=1&mute=1&loop=1&playlist=FIxXuY8Gpw4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+          allow="autoplay; encrypted-media"
+          className="pointer-events-none absolute"
+          style={{
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 'max(100vw, 177.78vh)',
+            height: 'max(56.25vw, 100vh)',
+            opacity: 0.35,
+          }}
+          title="Hero background video"
+        />
+      </div>
 
       {/* Gradient overlay — navy to transparent, heavier on left & bottom */}
       <div
