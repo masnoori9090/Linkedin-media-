@@ -144,7 +144,7 @@ export default function Hero() {
                         </button>
 
                         <p className="mt-4 font-display text-xl leading-tight text-white sm:mt-5 sm:text-2xl">
-                          Watch the reel with sound
+                          Watch this
                         </p>
                         <p className="mt-2 font-sans text-xs leading-relaxed text-white/70 sm:text-sm">
                           The reel now plays directly on the website. Tap once to switch from the muted preview
