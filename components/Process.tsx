@@ -105,7 +105,7 @@ export default function Process() {
         {/* Desktop: horizontal timeline */}
         <div className="hidden lg:flex items-start justify-between">
           {steps.map((step, i) => (
-            <>
+            <div key={step.num} className="contents">
               <RevealOnScroll key={step.num} delay={i * 0.1} className="flex-1 min-w-0">
                 <div className="text-center px-3">
                   {/* Icon */}
@@ -126,7 +126,7 @@ export default function Process() {
                 </div>
               </RevealOnScroll>
               {i < steps.length - 1 && <Chevrons key={`chevron-${i}`} />}
-            </>
+            </div>
           ))}
         </div>
 
