@@ -68,7 +68,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="grid w-full items-end gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(320px,420px)] lg:gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(360px,460px)]">
+        <div className="grid w-full items-end gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(380px,500px)] lg:gap-8 xl:grid-cols-[minmax(0,0.88fr)_minmax(430px,560px)]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -139,28 +139,28 @@ export default function Hero() {
                   }`}
                 />
                 <div
-                  className={`absolute inset-x-5 bottom-5 top-5 flex flex-col justify-end ${
+                  className={`absolute inset-x-4 bottom-4 top-4 flex flex-col justify-end sm:inset-x-5 sm:bottom-5 sm:top-5 ${
                     hasSound ? 'pointer-events-none' : ''
                   }`}
                 >
-                  <div className="max-w-sm">
+                  <div className="max-w-[18rem] sm:max-w-xs">
                     {!hasSound && (
                       <>
                         <button
                           type="button"
                           onClick={handleEnableSound}
-                          className="group inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-linkedin hover:bg-linkedin/80"
+                          className="group inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-linkedin hover:bg-linkedin/80 sm:h-16 sm:w-16"
                           aria-label="Play reel with sound"
                         >
-                          <svg className="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                          <svg className="h-5 w-5 translate-x-0.5 sm:h-6 sm:w-6" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z" />
                           </svg>
                         </button>
 
-                        <p className="mt-5 font-display text-2xl leading-tight text-white sm:text-3xl">
+                        <p className="mt-4 font-display text-xl leading-tight text-white sm:mt-5 sm:text-2xl">
                           Watch the reel with sound
                         </p>
-                        <p className="mt-2 font-sans text-sm leading-relaxed text-white/70 sm:text-base">
+                        <p className="mt-2 font-sans text-xs leading-relaxed text-white/70 sm:text-sm">
                           The reel now plays directly on the website. Tap once to switch from the muted preview
                           to full playback with sound.
                         </p>
