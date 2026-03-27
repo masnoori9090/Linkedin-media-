@@ -139,14 +139,10 @@ export default function Hero() {
                   }`}
                 />
                 <div
-                  className={`absolute inset-x-5 bottom-5 top-5 flex flex-col justify-between ${
+                  className={`absolute inset-x-5 bottom-5 top-5 flex flex-col justify-end ${
                     hasSound ? 'pointer-events-none' : ''
                   }`}
                 >
-                  <div className="self-start rounded-full border border-white/15 bg-black/30 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-white/70 backdrop-blur-sm">
-                    {hasSound ? 'Playing On-Site' : 'Brand Reel'}
-                  </div>
-
                   <div className="max-w-sm">
                     {!hasSound && (
                       <>
