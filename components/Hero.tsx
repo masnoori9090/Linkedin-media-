@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Button from './ui/Button'
 
@@ -13,54 +12,16 @@ const heroStats = [
 const headlineLines = ['Turn Your', 'Expertise Into', 'Influence']
 const VIDEO_ID = 'FIxXuY8Gpw4'
 const VIDEO_POSTER = `https://i.ytimg.com/vi/${VIDEO_ID}/hqdefault.jpg`
-const AMBIENT_VIDEO_SRC = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&rel=0&modestbranding=1&playsinline=1`
-const PLAYER_VIDEO_SRC = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1&controls=1`
+const VIDEO_URL = `https://www.youtube.com/watch?v=${VIDEO_ID}`
 
 export default function Hero() {
-  const [showPlayer, setShowPlayer] = useState(false)
-  const [isTouchDevice, setIsTouchDevice] = useState(false)
-  const [deviceReady, setDeviceReady] = useState(false)
-
-  useEffect(() => {
-    const query = window.matchMedia('(hover: none), (pointer: coarse)')
-
-    const updateDeviceMode = () => {
-      setIsTouchDevice(query.matches || navigator.maxTouchPoints > 0)
-      setDeviceReady(true)
-    }
-
-    updateDeviceMode()
-
-    if (typeof query.addEventListener === 'function') {
-      query.addEventListener('change', updateDeviceMode)
-      return () => query.removeEventListener('change', updateDeviceMode)
-    }
-
-    query.addListener(updateDeviceMode)
-    return () => query.removeListener(updateDeviceMode)
-  }, [])
-
   return (
     <section id="hero" className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-navy">
-      {!isTouchDevice && deviceReady && (
-        <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-          <iframe
-            src={AMBIENT_VIDEO_SRC}
-            allow="autoplay; encrypted-media; picture-in-picture"
-            className="pointer-events-none absolute"
-            style={{
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: 'max(100vw, 177.78vh)',
-              height: 'max(56.25vw, 100vh)',
-              opacity: 0.4,
-            }}
-            title="LinkedIn Media ambient reel"
-            tabIndex={-1}
-          />
-        </div>
-      )}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-[0.16] blur-[2px] scale-105"
+        style={{ backgroundImage: `url(${VIDEO_POSTER})` }}
+        aria-hidden="true"
+      />
 
       <div
         className="absolute inset-0 z-[1]"
@@ -130,52 +91,43 @@ export default function Hero() {
           >
             <div className="overflow-hidden rounded-[28px] border border-white/10 bg-navy-secondary shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
               <div className="relative aspect-[16/10] overflow-hidden">
-                {showPlayer ? (
-                  <iframe
-                    src={PLAYER_VIDEO_SRC}
-                    title="LinkedIn Media hero reel"
-                    allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-                    allowFullScreen
-                    className="absolute inset-0 h-full w-full"
-                  />
-                ) : (
-                  <>
-                    <div
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${VIDEO_POSTER})` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/35 to-navy/10" />
-                    <div className="absolute inset-x-5 bottom-5 top-5 flex flex-col justify-between">
-                      <div className="self-start rounded-full border border-white/15 bg-black/30 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-white/70 backdrop-blur-sm">
-                        Brand Reel
-                      </div>
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${VIDEO_POSTER})` }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/45 to-navy/10" />
+                <div className="absolute inset-x-5 bottom-5 top-5 flex flex-col justify-between">
+                  <div className="self-start rounded-full border border-white/15 bg-black/30 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-white/70 backdrop-blur-sm">
+                    Brand Reel
+                  </div>
 
-                      <button
-                        type="button"
-                        onClick={() => setShowPlayer(true)}
-                        className="group flex w-full flex-col items-start gap-5 text-left"
-                        aria-label="Play LinkedIn Media reel"
-                      >
-                        <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-sm transition duration-300 group-hover:scale-105 group-hover:border-linkedin group-hover:bg-linkedin/80">
-                          <svg className="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </span>
+                  <div className="max-w-sm">
+                    <a
+                      href={VIDEO_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-linkedin hover:bg-linkedin/80"
+                      aria-label="Watch LinkedIn Media reel on YouTube"
+                    >
+                      <svg className="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </a>
 
-                        <div className="max-w-sm">
-                          <p className="font-display text-2xl leading-tight text-white sm:text-3xl">
-                            Watch the reel with sound
-                          </p>
-                          <p className="mt-2 font-sans text-sm leading-relaxed text-white/70 sm:text-base">
-                            {isTouchDevice
-                              ? 'Tap to launch an inline player that works reliably on iPhone and iPad.'
-                              : 'Play the full reel without interrupting the rest of the page experience.'}
-                          </p>
-                        </div>
-                      </button>
+                    <p className="mt-5 font-display text-2xl leading-tight text-white sm:text-3xl">
+                      Watch the reel on YouTube
+                    </p>
+                    <p className="mt-2 font-sans text-sm leading-relaxed text-white/70 sm:text-base">
+                      The source video cannot be embedded on external websites, so phones and iPads now open
+                      the reel directly in YouTube where playback works reliably.
+                    </p>
+                    <div className="mt-5">
+                      <Button href={VIDEO_URL} external size="md" className="w-full sm:w-auto">
+                        Watch Reel
+                      </Button>
                     </div>
-                  </>
-                )}
+                  </div>
+                </div>
               </div>
             </div>
 
