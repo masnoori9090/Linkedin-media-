@@ -1,4 +1,10 @@
 import Link from 'next/link'
+import {
+  contactEmail,
+  contactPhoneDisplay,
+  contactPhoneHref,
+  whatsappHref,
+} from '@/lib/contact'
 
 const services = [
   { label: 'Profile Optimization', href: '#profile-optimization' },
@@ -94,18 +100,26 @@ export default function Footer() {
             </h4>
             <div className="space-y-3">
               <a
-                href="mailto:hello@linkedinmedia.com"
+                href={`mailto:${contactEmail}`}
                 className="font-sans text-sm text-textMid hover:text-linkedin transition-colors duration-200 block"
               >
-                hello@linkedinmedia.com
+                {contactEmail}
+              </a>
+              <a
+                href={contactPhoneHref}
+                className="font-sans text-sm text-textMid hover:text-linkedin transition-colors duration-200 block"
+              >
+                {contactPhoneDisplay}
               </a>
               <p className="font-sans text-sm text-textMuted">Dubai, UAE</p>
               <a
-                href="#contact"
+                href={whatsappHref}
                 className="inline-flex items-center gap-2 font-sans text-sm font-semibold text-linkedin hover:text-sky-400 transition-colors duration-200 mt-2"
                 style={{ color: '#38B6FF' }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Book a Call →
+                WhatsApp Us →
               </a>
             </div>
           </div>

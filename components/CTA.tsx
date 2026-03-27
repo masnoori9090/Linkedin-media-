@@ -1,5 +1,11 @@
 import RevealOnScroll from './ui/RevealOnScroll'
 import Button from './ui/Button'
+import {
+  contactEmail,
+  contactPhoneDisplay,
+  contactPhoneHref,
+  whatsappHref,
+} from '@/lib/contact'
 
 export default function CTA() {
   return (
@@ -45,16 +51,30 @@ export default function CTA() {
 
         <RevealOnScroll delay={0.3}>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
-            <Button href="mailto:hello@linkedinmedia.com" size="lg">
+            <Button href={contactPhoneHref} size="lg">
               Book a Strategy Call →
             </Button>
-            <Button href="#case-studies" variant="outline" size="lg">
-              See More Results
+            <Button href={whatsappHref} variant="outline" size="lg" external>
+              WhatsApp Us
             </Button>
           </div>
-          <p className="font-sans text-sm text-textMuted">
-            Free 30-minute consultation · No commitment
-          </p>
+          <div className="flex flex-col items-center justify-center gap-2 font-sans text-sm text-textMuted sm:flex-row sm:flex-wrap">
+            <a
+              href={`mailto:${contactEmail}`}
+              className="transition-colors duration-200 hover:text-linkedin"
+            >
+              {contactEmail}
+            </a>
+            <span className="hidden text-white/20 sm:inline">·</span>
+            <a
+              href={contactPhoneHref}
+              className="transition-colors duration-200 hover:text-linkedin"
+            >
+              {contactPhoneDisplay}
+            </a>
+            <span className="hidden text-white/20 sm:inline">·</span>
+            <span>Free 30-minute consultation</span>
+          </div>
         </RevealOnScroll>
       </div>
     </section>
