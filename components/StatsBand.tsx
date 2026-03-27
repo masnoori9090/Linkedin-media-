@@ -26,27 +26,27 @@ export default function StatsBand() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
         <RevealOnScroll>
-          <div className="text-center mb-10 md:mb-16">
+          <div className="mx-auto mb-10 max-w-5xl text-center md:mb-16">
             <span className="font-mono text-xs tracking-[0.2em] uppercase text-linkedin font-bold block mb-4">
               The Numbers
             </span>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-white leading-tight">
+            <h2 className="font-display text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
               Results that speak louder than promises
             </h2>
           </div>
         </RevealOnScroll>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-3xl overflow-hidden">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-3xl bg-white/5 sm:grid-cols-2 xl:grid-cols-4">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className="bg-navy-secondary/80 backdrop-blur-sm p-5 md:p-8 lg:p-12 text-center"
+              className="bg-navy-secondary/80 p-6 text-center backdrop-blur-sm sm:p-8 xl:p-10"
             >
               <AnimatedCounter
                 value={stat.value}
                 label={stat.label}
-                numberClassName="text-3xl md:text-5xl lg:text-7xl mb-3"
-                labelClassName="text-sm md:text-base mt-2"
+                numberClassName="mb-3 text-4xl sm:text-5xl xl:text-6xl 2xl:text-7xl"
+                labelClassName="mt-2 text-sm sm:text-base"
                 duration={2200}
               />
             </div>
