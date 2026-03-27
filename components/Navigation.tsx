@@ -22,6 +22,29 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow
+
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [menuOpen])
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
     <>
       <header
@@ -29,7 +52,7 @@ export default function Navigation() {
           scrolled ? 'nav-glass' : 'bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-8 h-[72px] flex items-center justify-between">
+        <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 md:px-8">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-0.5" data-cursor="hover">
             <span className="font-display text-xl font-bold text-white tracking-tight">LinkedIn</span>
@@ -100,7 +123,7 @@ export default function Navigation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[99] bg-navy-secondary flex flex-col items-center justify-center gap-8"
+            className="fixed inset-0 z-[99] flex flex-col items-center justify-center gap-8 bg-navy-secondary px-6 pb-10 pt-28 text-center"
           >
             {navLinks.map((link, i) => (
               <motion.div
@@ -112,7 +135,7 @@ export default function Navigation() {
                 <Link
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-display text-4xl text-white hover:gradient-text transition-all duration-200"
+                  className="font-display text-3xl text-white transition-all duration-200 hover:gradient-text sm:text-4xl"
                 >
                   {link.label}
                 </Link>
@@ -126,7 +149,7 @@ export default function Navigation() {
               <Link
                 href="#contact"
                 onClick={() => setMenuOpen(false)}
-                className="btn-gradient inline-flex items-center px-8 py-4 rounded-full text-lg font-semibold text-white mt-4"
+                className="btn-gradient mt-4 inline-flex w-full max-w-xs items-center justify-center rounded-full px-8 py-4 text-lg font-semibold text-white"
               >
                 <span className="relative z-10">Start a Project</span>
               </Link>
