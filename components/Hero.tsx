@@ -1,5 +1,6 @@
 'use client'
 
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Button from './ui/Button'
 
@@ -12,9 +13,39 @@ const heroStats = [
 const headlineLines = ['Turn Your', 'Expertise Into', 'Influence']
 const VIDEO_ID = 'FIxXuY8Gpw4'
 const VIDEO_POSTER = `https://i.ytimg.com/vi/${VIDEO_ID}/hqdefault.jpg`
-const VIDEO_URL = `https://www.youtube.com/watch?v=${VIDEO_ID}`
+const VIDEO_SRC = '/videos/hero-reel.mp4'
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [hasSound, setHasSound] = useState(false)
+  const [playbackHint, setPlaybackHint] = useState<string | null>(null)
+
+  const handleEnableSound = () => {
+    const video = videoRef.current
+    if (!video) return
+
+    setPlaybackHint(null)
+    video.pause()
+    video.currentTime = 0
+    video.muted = false
+    video.loop = false
+    video.controls = true
+    setHasSound(true)
+
+    const playbackAttempt = video.play()
+    if (playbackAttempt && typeof playbackAttempt.catch === 'function') {
+      playbackAttempt.catch(() => {
+        video.muted = true
+        video.controls = true
+        const mutedRetry = video.play()
+        if (mutedRetry && typeof mutedRetry.catch === 'function') {
+          mutedRetry.catch(() => undefined)
+        }
+        setPlaybackHint('If iPhone keeps audio blocked, use the speaker control in the video player.')
+      })
+    }
+  }
+
   return (
     <section id="hero" className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-navy">
       <div
@@ -91,41 +122,60 @@ export default function Hero() {
           >
             <div className="overflow-hidden rounded-[28px] border border-white/10 bg-navy-secondary shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
               <div className="relative aspect-[16/10] overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${VIDEO_POSTER})` }}
+                <video
+                  ref={videoRef}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  src={VIDEO_SRC}
+                  poster={VIDEO_POSTER}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/45 to-navy/10" />
-                <div className="absolute inset-x-5 bottom-5 top-5 flex flex-col justify-between">
+                <div
+                  className={`absolute inset-0 transition-opacity duration-300 ${
+                    hasSound ? 'bg-gradient-to-t from-navy/35 via-transparent to-navy/10' : 'bg-gradient-to-t from-navy via-navy/45 to-navy/10'
+                  }`}
+                />
+                <div
+                  className={`absolute inset-x-5 bottom-5 top-5 flex flex-col justify-between ${
+                    hasSound ? 'pointer-events-none' : ''
+                  }`}
+                >
                   <div className="self-start rounded-full border border-white/15 bg-black/30 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.24em] text-white/70 backdrop-blur-sm">
-                    Brand Reel
+                    {hasSound ? 'Playing On-Site' : 'Brand Reel'}
                   </div>
 
                   <div className="max-w-sm">
-                    <a
-                      href={VIDEO_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-linkedin hover:bg-linkedin/80"
-                      aria-label="Watch LinkedIn Media reel on YouTube"
-                    >
-                      <svg className="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </a>
+                    {!hasSound && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={handleEnableSound}
+                          className="group inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-sm transition duration-300 hover:scale-105 hover:border-linkedin hover:bg-linkedin/80"
+                          aria-label="Play reel with sound"
+                        >
+                          <svg className="h-6 w-6 translate-x-0.5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </button>
 
-                    <p className="mt-5 font-display text-2xl leading-tight text-white sm:text-3xl">
-                      Watch the reel on YouTube
-                    </p>
-                    <p className="mt-2 font-sans text-sm leading-relaxed text-white/70 sm:text-base">
-                      The source video cannot be embedded on external websites, so phones and iPads now open
-                      the reel directly in YouTube where playback works reliably.
-                    </p>
-                    <div className="mt-5">
-                      <Button href={VIDEO_URL} external size="md" className="w-full sm:w-auto">
-                        Watch Reel
-                      </Button>
-                    </div>
+                        <p className="mt-5 font-display text-2xl leading-tight text-white sm:text-3xl">
+                          Watch the reel with sound
+                        </p>
+                        <p className="mt-2 font-sans text-sm leading-relaxed text-white/70 sm:text-base">
+                          The reel now plays directly on the website. Tap once to switch from the muted preview
+                          to full playback with sound.
+                        </p>
+                      </>
+                    )}
+
+                    {hasSound && playbackHint && (
+                      <p className="mt-4 rounded-2xl border border-white/10 bg-black/25 px-4 py-3 font-sans text-xs leading-relaxed text-white/80 backdrop-blur-sm">
+                        {playbackHint}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
