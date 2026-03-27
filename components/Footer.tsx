@@ -12,9 +12,9 @@ const company = ['Results', 'Case Studies', 'Process', 'Testimonials', 'Contact'
 export default function Footer() {
   return (
     <footer className="bg-navy-secondary border-t" style={{ borderColor: 'rgba(0,119,181,0.1)' }}>
-      <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-20">
         {/* 4-col grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 mb-10 md:mb-16">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="inline-flex items-center gap-0 mb-4">

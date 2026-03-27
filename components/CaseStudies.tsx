@@ -111,14 +111,14 @@ export default function CaseStudies() {
   return (
     <section id="case-studies" className="overflow-hidden">
       {/* Section header */}
-      <div className="py-20 bg-navy text-center">
+      <div className="py-14 md:py-20 bg-navy text-center">
         <RevealOnScroll>
           <span className="font-mono text-xs tracking-[0.2em] uppercase text-linkedin font-bold block mb-4">
             Client Stories
           </span>
         </RevealOnScroll>
         <RevealOnScroll delay={0.1}>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight max-w-2xl mx-auto px-6">
+          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight max-w-2xl mx-auto px-6">
             Case studies that prove{' '}
             <span className="italic gradient-text">the system works</span>
           </h2>
@@ -131,10 +131,10 @@ export default function CaseStudies() {
         return (
           <div
             key={cs.id}
-            className={`py-24 md:py-32 ${cs.bgDark ? 'bg-navy-secondary' : 'section-light'}`}
+            className={`py-14 md:py-24 lg:py-32 ${cs.bgDark ? 'bg-navy-secondary' : 'section-light'}`}
           >
             <div className="max-w-7xl mx-auto px-6 md:px-8">
-              <div className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center`}>
+              <div className={`grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center`}>
                 {/* Image side */}
                 <RevealOnScroll direction={isLeft ? 'right' : 'left'} className={!isLeft ? 'lg:order-2' : ''}>
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/5">
@@ -170,7 +170,7 @@ export default function CaseStudies() {
                     <div
                       className="font-sans font-black leading-none mb-2"
                       style={{
-                        fontSize: 'clamp(72px, 12vw, 120px)',
+                        fontSize: 'clamp(48px, 10vw, 120px)',
                         background: 'linear-gradient(135deg, #00D4AA 0%, #38B6FF 50%, #0077B5 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
@@ -183,7 +183,7 @@ export default function CaseStudies() {
                       {cs.metricLabel}
                     </p>
 
-                    <h3 className={`font-display text-2xl md:text-3xl font-bold leading-snug mb-8 ${cs.bgDark ? 'text-white' : 'text-navyText'}`}>
+                    <h3 className={`font-display text-xl md:text-3xl font-bold leading-snug mb-8 ${cs.bgDark ? 'text-white' : 'text-navyText'}`}>
                       {cs.tagline}
                     </h3>
 
@@ -223,13 +223,13 @@ export default function CaseStudies() {
       })}
 
       {/* More clients grid */}
-      <div className="py-24 bg-navy">
+      <div className="py-14 md:py-24 bg-navy">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <RevealOnScroll>
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-linkedin font-bold text-center mb-4">
               More Clients
             </p>
-            <h3 className="font-display text-3xl md:text-4xl font-bold text-white text-center mb-16">
+            <h3 className="font-display text-2xl md:text-4xl font-bold text-white text-center mb-10 md:mb-16">
               More leaders getting{' '}
               <span className="italic gradient-text">real results</span>
             </h3>

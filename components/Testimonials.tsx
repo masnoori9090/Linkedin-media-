@@ -41,15 +41,15 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-28 md:py-36 section-light overflow-hidden">
+    <section id="testimonials" className="py-16 md:py-28 lg:py-36 section-light overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Header */}
         <RevealOnScroll>
-          <div className="mb-16">
+          <div className="mb-10 md:mb-16">
             <span className="font-mono text-xs tracking-[0.2em] uppercase text-linkedin font-bold block mb-4">
               Client Voices
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-navyText leading-tight tracking-tight max-w-xl">
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-navyText leading-tight tracking-tight max-w-xl">
               Words from the leaders{' '}
               <span
                 className="italic"
@@ -69,7 +69,7 @@ export default function Testimonials() {
         <StaggerContainer staggerDelay={0.1} className="grid md:grid-cols-2 gap-6">
           {testimonials.map((t) => (
             <StaggerChild key={t.name}>
-              <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-xl hover:border-gray-200 transition-all duration-300 h-full flex flex-col">
+              <div className="bg-white border border-gray-100 rounded-3xl p-5 md:p-8 shadow-sm hover:shadow-xl hover:border-gray-200 transition-all duration-300 h-full flex flex-col">
                 {/* Decorative quote mark */}
                 <div
                   className="font-display text-7xl font-black leading-none mb-4"
@@ -79,7 +79,7 @@ export default function Testimonials() {
                   &ldquo;
                 </div>
 
-                <blockquote className="font-sans text-lg text-navyMid leading-relaxed flex-1 mb-8">
+                <blockquote className="font-sans text-base md:text-lg text-navyMid leading-relaxed flex-1 mb-8">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
 

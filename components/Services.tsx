@@ -50,15 +50,15 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-28 md:py-36 bg-navy">
+    <section id="services" className="py-16 md:py-28 lg:py-36 bg-navy">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Header */}
         <RevealOnScroll>
-          <div className="mb-16 md:mb-20">
+          <div className="mb-10 md:mb-16 lg:mb-20">
             <span className="font-mono text-xs tracking-[0.2em] uppercase text-linkedin font-bold block mb-4">
               What We Do
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight max-w-2xl">
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight max-w-2xl">
               A full-service branding engine{' '}
               <span className="italic gradient-text">built for LinkedIn</span>
             </h2>
@@ -69,7 +69,7 @@ export default function Services() {
         <StaggerContainer staggerDelay={0.1} className="grid md:grid-cols-2 gap-6">
           {services.map((svc) => (
             <StaggerChild key={svc.num}>
-              <div className="group card-hover-glow bg-navy-secondary border border-white/5 rounded-3xl p-8 relative overflow-hidden h-full">
+              <div className="group card-hover-glow bg-navy-secondary border border-white/5 rounded-3xl p-6 md:p-8 relative overflow-hidden h-full">
                 {/* Top blue border on hover */}
                 <div
                   className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -84,7 +84,7 @@ export default function Services() {
                 {/* Icon */}
                 <div className="text-linkedin mb-5">{svc.icon}</div>
 
-                <h3 className="font-display text-2xl font-bold text-white mb-4 leading-snug">
+                <h3 className="font-display text-xl md:text-2xl font-bold text-white mb-4 leading-snug">
                   {svc.title}
                 </h3>
                 <p className="font-sans text-textMid leading-relaxed">{svc.body}</p>

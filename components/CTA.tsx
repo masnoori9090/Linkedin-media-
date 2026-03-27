@@ -3,7 +3,7 @@ import Button from './ui/Button'
 
 export default function CTA() {
   return (
-    <section id="contact" className="relative py-32 md:py-44 overflow-hidden bg-navy">
+    <section id="contact" className="relative py-20 md:py-32 lg:py-44 overflow-hidden bg-navy">
       {/* Radial blue glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -31,21 +31,21 @@ export default function CTA() {
         </RevealOnScroll>
 
         <RevealOnScroll delay={0.1}>
-          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6">
+          <h2 className="font-display text-3xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6">
             Ready to become the voice{' '}
             <span className="italic gradient-text">your industry listens to?</span>
           </h2>
         </RevealOnScroll>
 
         <RevealOnScroll delay={0.2}>
-          <p className="font-sans text-xl text-textMid leading-relaxed mb-12 max-w-xl mx-auto">
+          <p className="font-sans text-base md:text-xl text-textMid leading-relaxed mb-8 md:mb-12 max-w-xl mx-auto">
             No pitch decks. No pressure. Just a strategic conversation about where you are and where you want to be.
           </p>
         </RevealOnScroll>
 
         <RevealOnScroll delay={0.3}>
           <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
-            <Button href="mailto:hello@trifidmedia.com" size="lg">
+            <Button href="mailto:hello@linkedinmedia.com" size="lg">
               Book a Strategy Call →
             </Button>
             <Button href="#case-studies" variant="outline" size="lg">

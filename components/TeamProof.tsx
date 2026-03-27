@@ -37,15 +37,15 @@ const team = [
 
 export default function TeamProof() {
   return (
-    <section className="py-28 md:py-36 bg-navy-secondary overflow-hidden">
+    <section className="py-16 md:py-28 lg:py-36 bg-navy-secondary overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Header */}
         <RevealOnScroll>
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <span className="font-mono text-xs tracking-[0.2em] uppercase text-linkedin font-bold block mb-4">
               The Team
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight max-w-3xl mx-auto">
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight max-w-3xl mx-auto">
               The LinkedIn Media team followed suit and{' '}
               <span className="italic gradient-text">scaled their accounts</span> as well
             </h2>
@@ -53,7 +53,7 @@ export default function TeamProof() {
         </RevealOnScroll>
 
         {/* Cards */}
-        <StaggerContainer staggerDelay={0.12} className="grid md:grid-cols-3 gap-6">
+        <StaggerContainer staggerDelay={0.12} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {team.map((member) => (
             <StaggerChild key={member.name}>
               <div className="card-hover-glow bg-navy-card border border-white/5 rounded-3xl overflow-hidden h-full">
@@ -74,7 +74,7 @@ export default function TeamProof() {
                 </div>
 
                 {/* Info */}
-                <div className="p-6">
+                <div className="p-4 md:p-6">
                   <div
                     className="w-8 h-[2px] mb-4 rounded-full"
                     style={{ background: `linear-gradient(90deg, ${member.color}, transparent)` }}

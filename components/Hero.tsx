@@ -133,7 +133,7 @@ export default function Hero() {
       <AnimatePresence>
         {contentVisible && (
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full pt-28 pb-20 flex items-center min-h-screen"
+        className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full pt-24 pb-16 md:pt-28 md:pb-20 flex items-center min-h-screen"
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1, ease: 'easeInOut' }}
@@ -151,7 +151,7 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <h1 className="font-display text-6xl md:text-7xl lg:text-[88px] font-bold leading-[1.02] tracking-tight mb-8">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-[88px] font-bold leading-[1.02] tracking-tight mb-8">
             {headlineLines.map((line, i) => (
               <div key={i} className="overflow-hidden">
                 <motion.span
@@ -170,7 +170,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="font-sans text-lg md:text-xl text-textMid leading-relaxed max-w-xl mb-10"
+            className="font-sans text-base md:text-xl text-textMid leading-relaxed max-w-xl mb-10"
           >
             We architect personal brands for founders, executives, and industry leaders
             on LinkedIn — transforming quiet credibility into commanding visibility.

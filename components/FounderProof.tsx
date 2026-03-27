@@ -9,15 +9,15 @@ const founderStats = [
 
 export default function FounderProof() {
   return (
-    <section className="section-light py-28 md:py-36 overflow-hidden">
+    <section className="section-light py-16 md:py-28 lg:py-36 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Header */}
         <RevealOnScroll>
-          <div className="mb-16">
+          <div className="mb-10 md:mb-16">
             <span className="font-mono text-xs tracking-[0.2em] uppercase text-linkedin font-bold block mb-4">
               Proof of Concept
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-navyText leading-tight tracking-tight max-w-2xl">
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-navyText leading-tight tracking-tight max-w-2xl">
               First, we did it{' '}
               <span
                 className="italic"
@@ -34,11 +34,11 @@ export default function FounderProof() {
           </div>
         </RevealOnScroll>
 
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-start">
           {/* Left — story */}
           <div>
             <RevealOnScroll delay={0.1}>
-              <p className="font-sans text-xl text-navyMid leading-relaxed mb-10">
+              <p className="font-sans text-base md:text-xl text-navyMid leading-relaxed mb-10">
                 Before building brands for others, Mahdi Shafiei built his own — from zero to{' '}
                 <strong className="text-navyText">96,000+ followers in less than a year.</strong>{' '}
                 What started as a personal experiment became the proof of concept behind everything LinkedIn Media does today.
@@ -50,7 +50,7 @@ export default function FounderProof() {
                 <StaggerChild key={stat.label}>
                   <div className="flex items-baseline gap-4 py-5 border-b border-gray-100 last:border-0">
                     <span
-                      className="font-sans text-4xl md:text-5xl font-black"
+                      className="font-sans text-3xl md:text-5xl font-black"
                       style={{
                         background: 'linear-gradient(135deg, #0077B5, #38B6FF, #00D4AA)',
                         WebkitBackgroundClip: 'text',

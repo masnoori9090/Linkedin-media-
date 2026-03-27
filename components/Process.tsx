@@ -87,15 +87,15 @@ function Chevrons() {
 
 export default function Process() {
   return (
-    <section id="process" className="py-28 md:py-36 bg-navy overflow-hidden">
+    <section id="process" className="py-16 md:py-28 lg:py-36 bg-navy overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Header */}
         <RevealOnScroll>
-          <div className="text-center mb-20">
+          <div className="text-center mb-12 md:mb-20">
             <span className="font-mono text-xs tracking-[0.2em] uppercase text-linkedin font-bold block mb-4">
               Our Methodology
             </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight max-w-2xl mx-auto">
+            <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight max-w-2xl mx-auto">
               How we build your brand{' '}
               <span className="italic gradient-text">in 5 steps</span>
             </h2>
