@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Button from './ui/Button'
 
@@ -16,9 +16,61 @@ const VIDEO_POSTER = `https://i.ytimg.com/vi/${VIDEO_ID}/hqdefault.jpg`
 const VIDEO_SRC = '/videos/hero-reel.mp4'
 
 export default function Hero() {
+  const mediaCardRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [hasSound, setHasSound] = useState(false)
   const [playbackHint, setPlaybackHint] = useState<string | null>(null)
+
+  useEffect(() => {
+    let frameId = 0
+
+    const syncVideoWithViewport = () => {
+      frameId = 0
+
+      const mediaCard = mediaCardRef.current
+      const video = videoRef.current
+      if (!mediaCard || !video) return
+
+      const rect = mediaCard.getBoundingClientRect()
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight
+      const visibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0))
+      const visibleRatio = visibleHeight / Math.max(rect.height, 1)
+
+      if (visibleRatio <= 0.2) {
+        video.pause()
+        video.muted = true
+        video.loop = true
+        video.controls = false
+        setHasSound(false)
+        setPlaybackHint(null)
+        return
+      }
+
+      if (visibleRatio > 0.45 && video.paused && video.muted && !video.controls) {
+        const previewPlayback = video.play()
+        if (previewPlayback && typeof previewPlayback.catch === 'function') {
+          previewPlayback.catch(() => undefined)
+        }
+      }
+    }
+
+    const requestSync = () => {
+      if (frameId) return
+      frameId = window.requestAnimationFrame(syncVideoWithViewport)
+    }
+
+    requestSync()
+    window.addEventListener('scroll', requestSync, { passive: true })
+    window.addEventListener('resize', requestSync)
+
+    return () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId)
+      }
+      window.removeEventListener('scroll', requestSync)
+      window.removeEventListener('resize', requestSync)
+    }
+  }, [])
 
   const handleEnableSound = () => {
     const video = videoRef.current
@@ -106,7 +158,10 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="w-full lg:col-start-2 lg:row-start-1"
           >
-            <div className="overflow-hidden rounded-[28px] border border-white/10 bg-navy-secondary shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
+            <div
+              ref={mediaCardRef}
+              className="overflow-hidden rounded-[28px] border border-white/10 bg-navy-secondary shadow-[0_24px_80px_rgba(0,0,0,0.35)]"
+            >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <video
                   ref={videoRef}
