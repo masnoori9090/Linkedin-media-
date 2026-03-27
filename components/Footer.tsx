@@ -1,13 +1,19 @@
 import Link from 'next/link'
 
 const services = [
-  'Profile Optimization',
-  'Content Strategy',
-  'Content Creation & Management',
-  'Growth & Thought Leadership',
+  { label: 'Profile Optimization', href: '#profile-optimization' },
+  { label: 'Content Strategy', href: '#content-strategy' },
+  { label: 'Content Creation & Management', href: '#content-creation-management' },
+  { label: 'Growth & Thought Leadership', href: '#growth-thought-leadership' },
 ]
 
-const company = ['Results', 'Case Studies', 'Process', 'Testimonials', 'Contact']
+const company = [
+  { label: 'Results', href: '#results' },
+  { label: 'Case Studies', href: '#case-studies' },
+  { label: 'Process', href: '#process' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Contact', href: '#contact' },
+]
 
 export default function Footer() {
   return (
@@ -49,14 +55,14 @@ export default function Footer() {
               Services
             </h4>
             <ul className="space-y-3">
-              {services.map((s) => (
-                <li key={s}>
-                  <Link
-                    href="#services"
+              {services.map((service) => (
+                <li key={service.href}>
+                  <a
+                    href={service.href}
                     className="font-sans text-sm text-textMid hover:text-linkedin transition-colors duration-200"
                   >
-                    {s}
-                  </Link>
+                    {service.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -68,14 +74,14 @@ export default function Footer() {
               Company
             </h4>
             <ul className="space-y-3">
-              {company.map((c) => (
-                <li key={c}>
-                  <Link
-                    href={`#${c.toLowerCase().replace(/\s+/g, '-')}`}
+              {company.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
                     className="font-sans text-sm text-textMid hover:text-linkedin transition-colors duration-200"
                   >
-                    {c}
-                  </Link>
+                    {item.label}
+                  </a>
                 </li>
               ))}
             </ul>

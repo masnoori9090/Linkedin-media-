@@ -3,7 +3,7 @@ import Button from './ui/Button'
 
 export default function CTA() {
   return (
-    <section id="contact" className="relative py-20 md:py-32 lg:py-44 overflow-hidden bg-navy">
+    <section id="contact" className="relative scroll-mt-28 overflow-hidden bg-navy py-20 md:py-32 lg:py-44">
       {/* Radial blue glow */}
       <div
         className="absolute inset-0 pointer-events-none"

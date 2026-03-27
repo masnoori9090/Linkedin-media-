@@ -12,7 +12,7 @@ export default function StatsBand() {
   return (
     <section
       id="results"
-      className="py-16 md:py-24 lg:py-32 relative overflow-hidden"
+      className="relative overflow-hidden scroll-mt-28 py-16 md:py-24 lg:py-32"
       style={{ backgroundColor: '#0A1628' }}
     >
       {/* Background glow */}

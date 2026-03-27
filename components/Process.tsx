@@ -87,7 +87,7 @@ function Chevrons() {
 
 export default function Process() {
   return (
-    <section id="process" className="py-16 md:py-28 lg:py-36 bg-navy overflow-hidden">
+    <section id="process" className="scroll-mt-28 overflow-hidden bg-navy py-16 md:py-28 lg:py-36">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Header */}
         <RevealOnScroll>

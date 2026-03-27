@@ -109,7 +109,7 @@ const moreClients = [
 
 export default function CaseStudies() {
   return (
-    <section id="case-studies" className="overflow-hidden">
+    <section id="case-studies" className="overflow-hidden scroll-mt-28">
       {/* Section header */}
       <div className="py-14 md:py-20 bg-navy text-center">
         <RevealOnScroll>

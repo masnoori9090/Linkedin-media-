@@ -41,7 +41,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-16 md:py-28 lg:py-36 section-light overflow-hidden">
+    <section id="testimonials" className="section-light overflow-hidden scroll-mt-28 py-16 md:py-28 lg:py-36">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Header */}
         <RevealOnScroll>

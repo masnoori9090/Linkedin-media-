@@ -3,6 +3,7 @@ import RevealOnScroll, { StaggerContainer, StaggerChild } from './ui/RevealOnScr
 const services = [
   {
     num: '01',
+    anchor: 'profile-optimization',
     title: 'Profile Optimization',
     body: 'Your LinkedIn profile is your landing page. We redesign your banner, headline, About section, and experience to convert visitors into clients, partners, and opportunities.',
     icon: (
@@ -15,6 +16,7 @@ const services = [
   },
   {
     num: '02',
+    anchor: 'content-strategy',
     title: 'Content Strategy',
     body: 'We define your tone, audience, and content pillars — then build a monthly calendar that tells your story and positions you as the go-to voice in your industry.',
     icon: (
@@ -26,6 +28,7 @@ const services = [
   },
   {
     num: '03',
+    anchor: 'content-creation-management',
     title: 'Content Creation & Management',
     body: 'We handle everything — writing, creative direction, scheduling, and engagement. 15 fully managed posts per month, each approved by you before it goes live.',
     icon: (
@@ -37,6 +40,7 @@ const services = [
   },
   {
     num: '04',
+    anchor: 'growth-thought-leadership',
     title: 'Growth & Thought Leadership',
     body: 'Once the foundation is set, we amplify — targeted follower growth, strategic engagement with key voices, and monthly performance optimization.',
     icon: (
@@ -50,7 +54,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-16 md:py-28 lg:py-36 bg-navy">
+    <section id="services" className="scroll-mt-28 bg-navy py-16 md:py-28 lg:py-36">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         {/* Header */}
         <RevealOnScroll>
@@ -69,7 +73,10 @@ export default function Services() {
         <StaggerContainer staggerDelay={0.1} className="grid md:grid-cols-2 gap-6">
           {services.map((svc) => (
             <StaggerChild key={svc.num}>
-              <div className="group card-hover-glow bg-navy-secondary border border-white/5 rounded-3xl p-6 md:p-8 relative overflow-hidden h-full">
+              <div
+                id={svc.anchor}
+                className="group card-hover-glow relative h-full scroll-mt-28 overflow-hidden rounded-3xl border border-white/5 bg-navy-secondary p-6 md:p-8"
+              >
                 {/* Top blue border on hover */}
                 <div
                   className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
