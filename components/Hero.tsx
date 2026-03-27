@@ -68,12 +68,12 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="grid w-full items-end gap-12 lg:grid-cols-[minmax(0,0.92fr)_minmax(380px,500px)] lg:gap-8 xl:grid-cols-[minmax(0,0.88fr)_minmax(430px,560px)]">
+        <div className="grid w-full items-start gap-x-8 gap-y-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(380px,500px)] xl:grid-cols-[minmax(0,0.88fr)_minmax(430px,560px)]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-3xl"
+            className="max-w-3xl lg:col-start-1 lg:row-start-1"
           >
             <div className="mb-8 flex items-center gap-3">
               <div className="h-px w-8 bg-linkedin sm:w-12" />
@@ -98,27 +98,13 @@ export default function Hero() {
               LinkedIn, turning quiet credibility into commanding visibility, pipeline, and
               long-term authority.
             </p>
-
-            <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-              <Button href="#contact" size="lg" className="w-full sm:w-auto">
-                Book a Strategy Call
-              </Button>
-              <Button
-                href="#case-studies"
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                View Case Studies
-              </Button>
-            </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full"
+            className="w-full lg:col-start-2 lg:row-start-1"
           >
             <div className="overflow-hidden rounded-[28px] border border-white/10 bg-navy-secondary shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
               <div className="relative aspect-[16/10] overflow-hidden">
@@ -176,8 +162,36 @@ export default function Hero() {
                 </div>
               </div>
             </div>
+          </motion.div>
 
-            <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-start-1 lg:row-start-2"
+          >
+            <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+              <Button href="#contact" size="lg" className="w-full sm:w-auto">
+                Book a Strategy Call
+              </Button>
+              <Button
+                href="#case-studies"
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
+                View Case Studies
+              </Button>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-start-2 lg:row-start-2"
+          >
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               {heroStats.map((stat) => (
                 <div
                   key={stat.label}
