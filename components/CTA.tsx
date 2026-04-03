@@ -47,7 +47,7 @@ export default function CTA() {
         <RevealOnScroll delay={0.3}>
           <div
             className="calendly-inline-widget rounded-2xl overflow-hidden"
-            data-url="https://calendly.com/d/cykr-hcw-h3f?hide_gdpr_banner=1"
+            data-url="https://calendly.com/trifidmedia-/30min?hide_event_type_details=1&hide_gdpr_banner=1"
             style={{ minWidth: '320px', height: '700px' }}
           />
           <Script
