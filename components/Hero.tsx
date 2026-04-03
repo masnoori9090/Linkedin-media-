@@ -226,7 +226,7 @@ export default function Hero() {
             className="lg:col-start-1 lg:row-start-2"
           >
             <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
-              <Button href="#contact" size="lg" className="w-full sm:w-auto">
+              <Button href="https://calendly.com/trifidmedia-/30min" size="lg" className="w-full sm:w-auto">
                 Book a Strategy Call
               </Button>
               <Button
