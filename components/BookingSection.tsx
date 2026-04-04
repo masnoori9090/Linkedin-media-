@@ -31,7 +31,7 @@ export default function BookingSection() {
         <RevealOnScroll delay={0.1}>
           <div
             className="calendly-inline-widget rounded-2xl overflow-hidden"
-            data-url="https://calendly.com/trifidmedia-/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=060606&text_color=ffffff"
+            data-url="https://calendly.com/trifidmedia-/30min?hide_event_type_details=1&hide_gdpr_banner=1&text_color=000000"
             style={{ minWidth: '320px', height: '700px' }}
           />
           <Script
