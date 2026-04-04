@@ -81,7 +81,7 @@ export default function Navigation() {
           {/* CTA */}
           <div className="hidden md:block">
             <Link
-              href="https://calendly.com/trifidmedia-/30min"
+              href="#contact"
               data-cursor="hover"
               className="btn-gradient inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white"
             >
@@ -147,7 +147,7 @@ export default function Navigation() {
               transition={{ delay: 0.4 }}
             >
               <Link
-                href="https://calendly.com/trifidmedia-/30min"
+                href="#contact"
                 onClick={() => setMenuOpen(false)}
                 className="btn-gradient mt-4 inline-flex w-full max-w-xs items-center justify-center rounded-full px-8 py-4 text-lg font-semibold text-white"
               >
