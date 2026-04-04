@@ -1,9 +1,9 @@
-import Script from 'next/script'
 import RevealOnScroll from './ui/RevealOnScroll'
+import Button from './ui/Button'
 
 export default function CTA() {
   return (
-    <section id="contact" className="relative py-20 md:py-32 overflow-hidden bg-navy">
+    <section className="relative py-20 md:py-32 lg:py-44 overflow-hidden bg-navy">
       {/* Radial blue glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -38,26 +38,21 @@ export default function CTA() {
         </RevealOnScroll>
 
         <RevealOnScroll delay={0.2}>
-          <p className="font-sans text-base md:text-xl text-textMid leading-relaxed mb-10 md:mb-14 max-w-xl mx-auto">
+          <p className="font-sans text-base md:text-xl text-textMid leading-relaxed mb-8 md:mb-12 max-w-xl mx-auto">
             No pitch decks. No pressure. Just a strategic conversation about where you are and where you want to be.
           </p>
         </RevealOnScroll>
 
-        {/* Calendly inline widget */}
         <RevealOnScroll delay={0.3}>
-          <div
-            className="calendly-inline-widget rounded-2xl overflow-hidden"
-            data-url="https://calendly.com/trifidmedia-/30min?background_color=060606&text_color=ffffff"
-            style={{ minWidth: '320px', height: '700px' }}
-          />
-          <Script
-            src="https://assets.calendly.com/assets/external/widget.js"
-            strategy="lazyOnload"
-          />
-        </RevealOnScroll>
-
-        <RevealOnScroll delay={0.4}>
-          <p className="font-sans text-sm text-textMuted mt-6">
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
+            <Button href="#contact" size="lg">
+              Book a Strategy Call →
+            </Button>
+            <Button href="#case-studies" variant="outline" size="lg">
+              See More Results
+            </Button>
+          </div>
+          <p className="font-sans text-sm text-textMuted">
             Free 30-minute consultation · No commitment
           </p>
         </RevealOnScroll>

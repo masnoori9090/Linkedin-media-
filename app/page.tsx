@@ -11,6 +11,7 @@ import TeamProof from '@/components/TeamProof'
 import CaseStudies from '@/components/CaseStudies'
 import Process from '@/components/Process'
 import Testimonials from '@/components/Testimonials'
+import BookingSection from '@/components/BookingSection'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 import MagneticCursor from '@/components/ui/MagneticCursor'
@@ -23,6 +24,7 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
+        <BookingSection />
         <MarqueeStrip />
         <WhyLinkedIn />
         <Services />
