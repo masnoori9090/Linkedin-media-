@@ -14,12 +14,14 @@ import Testimonials from '@/components/Testimonials'
 import BookingSection from '@/components/BookingSection'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
+import WhatsAppPopup from '@/components/WhatsAppPopup'
 import MagneticCursor from '@/components/ui/MagneticCursor'
 
 export default function Home() {
   return (
     <>
       <MagneticCursor />
+      <WhatsAppPopup />
       <LoadingScreen />
       <Navigation />
       <main>
